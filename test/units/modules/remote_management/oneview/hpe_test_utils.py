@@ -28,7 +28,7 @@ class OneViewBaseTest(object):
     @pytest.fixture(autouse=True)
     def setUp(self, mock_ansible_module, mock_ov_client, request):
         marker = request.node.get_marker('resource')
-        self.resource = getattr(mock_ov_client, "%s" % (marker.args))
+        self.resource = getattr(mock_ov_client, "%s" % (marker.kwargs['name']))
         self.mock_ov_client = mock_ov_client
         self.mock_ansible_module = mock_ansible_module
 
